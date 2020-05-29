@@ -38,7 +38,7 @@ static Sp scratchpads[] = {
 };
 
 /* tagging */
-static const char *tags[] = { "1", "2", "3", "4", "5", "6", "7", "8", "9" };
+static const char *tags[] = { "1 ", "2 ", "3 ", "4 ", "5 ", "6 ", "7 ", "8 ", "9 " };
 
 static const Rule rules[] = {
 	/* xprop(1):
@@ -46,9 +46,12 @@ static const Rule rules[] = {
 	 *	WM_NAME(STRING) = title
 	*/
 	/* class    instance      title       	 tags mask    isfloating   isterminal  noswallow  monitor */
-	{ "Gimp",     NULL,       NULL,       	    1 << 8,       0,           0,         0,        -1 },
+	{ "TelegramDesktop",     NULL,       NULL,       	    1 << 8,       0,           0,         0,        -1 },
+	{ "Slack",     NULL,       NULL,       	    1 << 8,       0,           0,         0,        -1 },
+	{ "discord",     NULL,       NULL,       	    1 << 8,       0,           0,         0,        -1 },
+	{ "Thunderbid",     NULL,       NULL,       	    1 << 7,       0,           0,         0,        -1 },
+	{ "Spotify",     NULL,       NULL,       	    1 << 6,       0,           0,         0,        -1 }, // TODO This doesn't work because of spotify not setting up wmclass on startup
 	{ "St",       NULL,       NULL,       	    0,            0,           1,         0,        -1 },
-	{ NULL,       NULL,       "Event Tester",   0,            0,           0,         1,        -1 },
 	{ NULL,      "spterm",    NULL,       	    SPTAG(0),     1,           1,         0,        -1 },
 	{ NULL,      "spcalc",    NULL,       	    SPTAG(1),     1,           1,         0,        -1 },
 };
@@ -132,7 +135,7 @@ static Key keys[] = {
 	/* { MODKEY|ShiftMask,		XK_Tab,		spawn,		SHCMD("") }, */
 	{ MODKEY,			XK_q,		killclient,	{0} },
 	{ MODKEY|ShiftMask,		XK_q,		spawn,		SHCMD("sysact") },
-	{ MODKEY,			XK_w,		spawn,		SHCMD("$BROWSER") },
+	{ MODKEY,			XK_w,		spawn,		SHCMD("firefox") },
 	{ MODKEY|ShiftMask,		XK_w,		spawn,		SHCMD("st -e sudo nmtui") },
 	{ MODKEY,			XK_e,		spawn,		SHCMD("st -e neomutt ; pkill -RTMIN+12 dwmblocks; rmdir ~/.abook") },
 	{ MODKEY|ShiftMask,		XK_e,		spawn,		SHCMD("st -e abook -C ~/.config/abook/abookrc --datafile ~/.config/abook/addressbook") },
